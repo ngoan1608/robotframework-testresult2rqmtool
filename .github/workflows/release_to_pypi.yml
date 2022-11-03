@@ -1,9 +1,10 @@
 name: Publish RobotResults2RQM to PyPI
 
-on:
-  push:
-    tags:
-      - "rel/*.*.*.*"
+# on:
+#   push:
+#     tags:
+#       - "rel/*.*.*.*"
+on: push
 
 jobs:
   build-n-publish:
@@ -19,8 +20,10 @@ jobs:
           with:
             python-version: "3.9"
 
-        - name: Install Python dependencies
-          run: python -m pip install --upgrade build twine colorama pypandoc
+        - name: Install dependencies
+          run: |
+            apt install pandoc
+            python -m pip install --upgrade build twine colorama pypandoc
 
         - name: Build source and wheel distributions
           run: |
