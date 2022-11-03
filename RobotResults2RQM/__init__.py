@@ -12,6 +12,6 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-from .version import VERSION
+from config.version import VERSION
 from .robot2rqm import RobotResults2RQM, Logger
 from .CRQM import CRQMClient
