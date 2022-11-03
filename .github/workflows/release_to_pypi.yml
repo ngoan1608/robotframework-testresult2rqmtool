@@ -1,4 +1,4 @@
-name: Publish ${package_name} to PyPI / GitHub
+name: Publish RobotResults2RQM to PyPI
 
 on:
   push:
@@ -17,12 +17,14 @@ jobs:
         - name: Set up Python
           uses: actions/setup-python@v2
           with:
-            python-version: "3.x"
+            python-version: "3.9"
+
+        - name: Install Python dependencies
+          run: python -m pip install --upgrade build twine colorama pypandoc
 
         - name: Build source and wheel distributions
           run: |
-            python -m pip install --upgrade build twine
-            python -m build
+            python -m build -n
             twine check --strict dist/*
 
         - name: Publish distribution to Test PyPI
