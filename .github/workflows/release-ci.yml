@@ -1,0 +1,11 @@
+name: Publish to PyPI and Create Github Release due to rel/ tag
+
+on:
+  push:
+    tags:
+      - "rel/*.*.*"
+      - "rel/*.*.*.*"
+
+jobs:
+  build-n-publish:
+    uses: ngoan1608/.github/workflows/release.yml@develop
